@@ -1,0 +1,113 @@
+.media-card {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  width: clamp(120px, 22vw, 168px);
+  scroll-snap-align: start;
+}
+
+.media-card__frame {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.media-card:hover .media-card__frame,
+.media-card:focus-visible .media-card__frame {
+  transform: translateY(-6px) scale(1.035);
+  border-color: var(--amber-2);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+.media-card__poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-card__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  color: var(--stock-dim);
+  background: linear-gradient(160deg, var(--ink-3), var(--ink-2));
+}
+
+.media-card__sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.75) 100%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.media-card:hover .media-card__sheen {
+  opacity: 1;
+}
+
+.media-card__rank {
+  position: absolute;
+  left: -6px;
+  bottom: -10px;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: clamp(48px, 9vw, 72px);
+  line-height: 1;
+  color: var(--ink);
+  -webkit-text-stroke: 2px var(--amber);
+  pointer-events: none;
+}
+
+.media-card__badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(12, 10, 9, 0.75);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--line-strong);
+  color: var(--amber);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 6px;
+  border-radius: 20px;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.28s ease;
+}
+
+.media-card:hover .media-card__badge {
+  transform: scale(1.08);
+  background: rgba(12, 10, 9, 0.92);
+}
+
+.media-card__meta {
+  padding-top: 8px;
+}
+
+.media-card__title {
+  margin: 0;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--stock);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.media-card__year {
+  margin: 2px 0 0;
+  font-size: 0.75rem;
+  color: var(--stock-dim);
+  font-family: var(--font-mono);
+}

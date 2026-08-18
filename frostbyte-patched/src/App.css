@@ -1,0 +1,65 @@
+main {
+  min-height: 60vh;
+}
+
+.skip-link {
+  position: fixed;
+  top: -60px;
+  left: 12px;
+  z-index: 2000;
+  background: var(--amber);
+  color: var(--ink);
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+.explore-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--ink-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  padding: 18px 22px;
+  margin-top: 24px;
+  color: var(--stock);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.explore-cta:hover {
+  border-color: var(--amber-2);
+  transform: translateY(-2px);
+}
+
+.explore-cta__eyebrow {
+  margin: 0 0 2px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.explore-cta h3 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+}
+
+.explore-cta svg {
+  flex-shrink: 0;
+  color: var(--amber);
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: local('Bebas Neue');
+}
