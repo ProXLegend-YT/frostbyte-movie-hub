@@ -7,6 +7,7 @@ import { useWatchlist } from '../hooks/useWatchlist';
 import { useToast } from '../components/Toast';
 import Row from '../components/Row';
 import TrailerModal from '../components/TrailerModal';
+import WatchModal from '../components/WatchModal';
 import SeasonBrowser from '../components/SeasonBrowser';
 import WatchProviders from '../components/WatchProviders';
 import './Detail.css';
@@ -17,6 +18,7 @@ export default function Detail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [trailerOpen, setTrailerOpen] = useState(false);
+  const [watchOpen, setWatchOpen] = useState(false);
   const { has, toggle } = useWatchlist();
   const { show } = useToast();
 
@@ -124,8 +126,13 @@ export default function Detail() {
             {director && <p className="detail__crew"><strong>Director:</strong> {director.name}</p>}
 
             <div className="detail__actions">
+              {/* Watch Now — real movie embed via vidsrc.to */}
+              <button className="btn btn--primary" onClick={() => setWatchOpen(true)}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+                Watch Now
+              </button>
               <button
-                className={`btn ${inWatchlist ? 'btn--ghost' : 'btn--primary'}`}
+                className={`btn ${inWatchlist ? 'btn--ghost' : 'btn--ghost'}`}
                 onClick={() => {
                   toggle({
                     id: item.id,
@@ -203,6 +210,17 @@ export default function Detail() {
 
       {trailerOpen && trailer && (
         <TrailerModal videoKey={trailer.key} title={titleOf(item)} onClose={() => setTrailerOpen(false)} />
+      )}
+
+      {watchOpen && (
+        <WatchModal
+          id={item.id}
+          kind={kind}
+          title={titleOf(item)}
+          season={1}
+          episode={1}
+          onClose={() => setWatchOpen(false)}
+        />
       )}
     </div>
   );
